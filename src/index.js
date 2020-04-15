@@ -1,12 +1,20 @@
-import React from 'react';
+ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+ let posts =[
+     {id:1, message:"Hi! How are you?",like:5},
+     {id:2, message:"It's my first post", like:12},
+ ];
+
+
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App posts={posts}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

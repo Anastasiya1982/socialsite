@@ -3,14 +3,11 @@
     background-color: darkcyan;
     padding: 15px 15px 15px 20px;
 }
-.item  {
-
+.item a {
     padding-bottom: 15px;
-}
-.item a{
     color: #ffffff;
     text-decoration: none;
 }
-.active a  {
+.item a.activeLink   {
  color: aqua;
 }
