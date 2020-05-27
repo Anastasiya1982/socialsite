@@ -12,14 +12,6 @@ const Message = (props) => {
 
     return (
         <div>
-            <div>
-                <div>
-                    <textarea  ref={newMessageElement}></textarea>
-                </div>
-                <div>
-                    <button onClick={addMessage}>Add post</button>
-                </div>
-            </div>
             <div className={s.dialog}>{props.message}</div>
         </div>
     )
