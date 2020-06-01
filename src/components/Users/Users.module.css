@@ -1,0 +1,32 @@
+
+.usersPhoto{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.userImg{
+    display: flex;
+    flex-direction: column;
+}
+.userItem{
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    height: 150px;
+    margin: 10px auto
+;
+}
+.userInfo{
+    isplay: flex;
+    width: 330px;
+    height: 120px;
+    border: 1px solid green;
+    justify-content: space-around;
+    border-radius: 15px;
+}
+.userInfo div{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+}
+
