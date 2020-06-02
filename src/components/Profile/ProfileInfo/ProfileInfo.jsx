@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
+import userPhoto from '../../../assets/img/women.png'
 const ProfileInfo = () =>{
     return (
         <div>
@@ -9,7 +10,7 @@ const ProfileInfo = () =>{
             </div>
             <div className={s.aboutme}>
                 <img className={s.logo}
-                     src="https://f0.pngfuel.com/png/606/660/orange-yellow-and-green-bird-illustration-png-clip-art.png"></img>
+                     src={userPhoto}></img>
             </div>
 
     </div>
