@@ -1,19 +1,28 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
-import userPhoto from '../../../assets/img/women.png'
-const ProfileInfo = () =>{
+import Preloader from "../../common/Preloader/Preloader";
+import previuPicture from '../../../assets/img/Nature_Beach_Paradise_Beach_011272_.jpg'
+
+const ProfileInfo = (props) =>{
+    if(props.profile===null||props.profile===undefined){
+        return <Preloader/>
+    }
+
     return (
-        <div>
+        <div className={s.profileItem}>
             <div className={s.previu}>
                 <img
-                    src="https://www.zastavki.com/pictures/1600x1200/2008/Nature_Beach_Paradise_Beach_011272_.jpg"></img>
+                    src={previuPicture}></img>
             </div>
             <div className={s.aboutme}>
-                <img className={s.logo}
-                     src={userPhoto}></img>
+                <img className={s.avatar} src={props.profile.photos.small}></img>
+                <span> ABOUT ME: {props.profile.aboutMe}</span>
             </div>
+            <div>
+                <span>My contacts: VK: {props.profile.contacts.vk}</span>
+            </div>
+        </div>
 
-    </div>
     )
 }
 

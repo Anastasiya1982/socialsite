@@ -13,7 +13,8 @@ let store={
                 {id: 2, message: "It's my first post", like: 12},
 
             ],
-            newPostText:"it-camasutra.com"
+            newPostText:"it-camasutra.com",
+
         },
         dialogsPage: {
             dialogs: [

@@ -1,4 +1,7 @@
-
+.profileItem{
+    display: flex;
+    flex-direction: column;
+}
 .previu img {
     display: block;
     width: 100%;
@@ -6,16 +9,17 @@
 
 }
 
- .logo {
-    width: 150px;
-    height: 150px;
-    margin: 0px 15px 0px 20px;
 
-}
 .aboutme {
     display: flex;
-    width: 100%;
+    flex-direction: column;
     margin-top: 20px;
     padding-left: 10px;
+
+}
+.avatar{
+ display: block;
+    width: 150px;
+    height: 150px;
 }
 
