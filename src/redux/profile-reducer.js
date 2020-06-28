@@ -57,9 +57,8 @@ export const addPostActionCreator=()=>({ type:ADD_POST});
 export const updateNewPostTextActionCreator=(text)=>({
     type:UPDATE_NEW_POST_TEXT, newText:text});
 export  const setStatusAC=(status)=>({type:SET_STATUS,status});
-
-
 export const setUserProfile=(profile)=>({type:SET_USER_PROFILE,profile});
+
 //создаем  thunkCreator для получения профилей юзеров
 export const getUserProfile=(userId)=>(dispatch)=>{
     usersAPI.getProfile(userId)
