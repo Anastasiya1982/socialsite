@@ -15,17 +15,10 @@ const Dialogs = (props)=>{
     let messagesElements = state.messages.map( m =>(<Message key={m.id}  message={m.message} /> ));
      let newMessageBody = state.newMessageBody;
 
-    let onNewMessageChange =(e)=>{
-        let body = e.currentTarget.value;
-       props.updateNewMessageBody(body)
-    }
-   let onSendMessageClick =()=>{
-      props.sendMessage();
-   }
-
 
    let addNewMessage=(values)=>{
-        alert(values.newMessageBody);
+       props.sendMessage(values.newMessageBody);
+
    }
 
   if(!props.isAuth){
@@ -52,7 +45,6 @@ const  AddMessageForm =(props)=>{
             <div>
                 <div>
                     <Field component="textarea" name ="newMessageBody" placeholder={"Enter your message"}></Field>
-
                 </div>
                 <div>
                     <button> Send</button>
