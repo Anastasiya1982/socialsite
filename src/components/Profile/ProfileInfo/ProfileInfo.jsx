@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
 import Preloader from "../../common/Preloader/Preloader";
-import previuPicture from '../../../assets/img/Nature_Beach_Paradise_Beach_011272_.jpg'
 import ProfileStatus from "./ProfileStatus";
 
 
