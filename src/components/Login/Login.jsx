@@ -8,27 +8,24 @@ import {Redirect} from "react-router-dom";
 import s from './../common/FormControls/FormControls.module.css';
 
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit,error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
-                <Field placeholder={"email"} name={"email"}
+                <Field placeholder={"Email"} name={"email"}
                        component={Input}
-                       validate={[requiredField]}
-
-                />
+                       validate={[requiredField]}/>
             </div>
             <div>
                 <Field placeholder={"Password"} name={"password"} type={"password"}
                        component={Input}
-                       validate={[requiredField]}
-                />
+                       validate={[requiredField]}/>
             </div>
             <div>
                 <Field component={"input"} name={"rememberMe"} type={"checkbox"}/> remember
             </div>
-            {props.error && <div className={s.formSummaryError}>
-                {props.error}
+            {error && <div className={s.formSummaryError}>
+                {error}
             </div>
             }
             <div>

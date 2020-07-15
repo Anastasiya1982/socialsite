@@ -84,49 +84,42 @@ export const toggleIsFetching=(isFetching)=>({type:TOGGLE_IS_FETCHING,isFetching
 export const toggleFollowingProgress =(isFetching,userId)=>({type:TOGGLE_IS_FOLLOWING_PROGRESS,isFetching,userId});
 
 export  const getUsersThunkCreator=(currentPage,pageSize) =>{
-   return (dispatch)=>{
+   return async (dispatch)=>{
         dispatch(toggleIsFetching(true));
         dispatch(setCurrentPage(currentPage));
-        usersAPI.getUsers(currentPage,pageSize).then(data => {
+        let data = await usersAPI.getUsers(currentPage,pageSize);
             dispatch(setUsers(data.items));
             dispatch(setUsersTotalCount(data.totalCount));
             dispatch(toggleIsFetching(false));
-
-        });
     }
 }
+
+// создаем функцию для рефакторингаfollow/unfollow
+
+const followUnfollowFlow=async (dispatch,userId,apiMethod,actionCreator)=>{
+    dispatch(toggleFollowingProgress(true,userId));
+    let response= await apiMethod(userId );
+    if(response.data.resultCode===0) {
+        dispatch(actionCreator(userId));
+    }
+    dispatch(toggleFollowingProgress(false, userId));
+}
+
 //thunkCreator
 export  const follow=(userId) =>{
-    return (dispatch)=>{
-        dispatch(toggleFollowingProgress(true,userId));
-        usersAPI.followUsers(userId )
-            .then(data => {
-                if(data.resultCode===0) {
-                    dispatch(followSuccess(userId));
-                }
-                dispatch(toggleFollowingProgress(false, userId));
-            });
-
-         }
+    return async (dispatch)=> {
+        let apiMethod = usersAPI.follow.bind(usersAPI);
+        followUnfollowFlow(dispatch, userId, apiMethod, followSuccess);
+    }
 }
 
 //thunkCreator
 export  const unfollow=(userId) =>{
-    return (dispatch)=>{
-        dispatch(toggleFollowingProgress(true,userId));
-        usersAPI.unfollowUsers(userId )
-            .then(data => {
-                if(data.resultCode===0) {
-                    dispatch(unfollowSuccess(userId));
-                }
-                dispatch(toggleFollowingProgress(false, userId));
-            });
-
+    return async (dispatch)=> {
+        let apiMethod = usersAPI.unfollow.bind(usersAPI);
+        followUnfollowFlow(dispatch, userId, apiMethod, unfollowSuccess);
     }
 }
-
-
-
 
 
 export default usersReducer;

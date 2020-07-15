@@ -28,17 +28,13 @@ class App extends React.Component {
                 < Nav/>
                 <div className="app-wrapper-content">
                     <Route path='/dialogs'
-                           render={() => <DialogsContainer />
-                           }/>
+                           render={() => <DialogsContainer />}/>
                     <Route path='/profile/:userId?'
-                           render={() => <ProfileContainer />
-                           }/>
+                           render={() => <ProfileContainer /> }/>
                     <Route path='/users'
-                           render={() => <UsersContainer/>}
-                    />
+                           render={() => <UsersContainer/>}/>
                     <Route path='/login'
-                           render={() => <LoginPage/>}
-                    />
+                           render={() => <LoginPage/>}/>
                     {/*<Route path ='/news'     component ={News}/>*/}
                     {/*<Route path ='/music'     component ={Music}/>*/}
                     {/*<Route path ='/settings'  component ={Settings}/>*/}

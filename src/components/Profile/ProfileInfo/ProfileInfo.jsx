@@ -13,15 +13,11 @@ const ProfileInfo = (props) =>{
 
     return (
         <div className={s.profileItem}>
-            {/*<div className={s.previu}>*/}
-            {/*    <img*/}
-            {/*        src={previuPicture}></img>*/}
-            {/*</div>*/}
+
             <div className={s.aboutme}>
                 <img className={s.avatar} src={props.profile.photos.small}></img>
                 <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
 
-               {/*<ProfileStatus status={props.status} updateStatus={props.updateStatus}/>*/}
                 <span> ABOUT ME: {props.profile.aboutMe}</span>
             </div>
             <div>
