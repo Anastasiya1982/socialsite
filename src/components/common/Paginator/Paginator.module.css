@@ -1,3 +1,17 @@
-.selectedPage{
+.paginator{
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px 5px 30px 5px;
+}
+.paginator span{
+    padding: 2px 3px;
+    border: 1px solid gray;
+    margin-left: 5px;
+}
+.selectedPage {
     font-weight: bold;
+    border-color: black;
+}
+.paginator button{
+    margin: 2px 10px;
 }

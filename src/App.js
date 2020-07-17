@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import './App.css';
 import Nav from "./components/Nav/Nav";
 import {BrowserRouter, Route, withRouter} from "react-router-dom";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileInfo/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -12,6 +11,8 @@ import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store";
+import {withSuspense} from "./hoc/withSuspense";
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
 class App extends React.Component {
     componentDidMount() {
@@ -28,13 +29,13 @@ class App extends React.Component {
                 < Nav/>
                 <div className="app-wrapper-content">
                     <Route path='/dialogs'
-                           render={() => <DialogsContainer />}/>
+                           render={withSuspense(DialogsContainer)}/>
                     <Route path='/profile/:userId?'
                            render={() => <ProfileContainer /> }/>
                     <Route path='/users'
                            render={() => <UsersContainer/>}/>
                     <Route path='/login'
-                           render={() => <LoginPage/>}/>
+                           render={withSuspense(LoginPage)}/>
                     {/*<Route path ='/news'     component ={News}/>*/}
                     {/*<Route path ='/music'     component ={Music}/>*/}
                     {/*<Route path ='/settings'  component ={Settings}/>*/}
