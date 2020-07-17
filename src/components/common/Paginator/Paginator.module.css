@@ -10,6 +10,9 @@
 }
 .selectedPage {
     font-weight: bold;
+    color: black;
+    background-color: #dc897f;
+
     border-color: black;
 }
 .paginator button{
