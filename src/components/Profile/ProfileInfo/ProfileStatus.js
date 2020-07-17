@@ -38,7 +38,6 @@ class ProfileStatus extends React.Component {
     }
 
     render() {
-
         return (
             <div>
                 {!this.state.editMode &&
@@ -54,7 +53,6 @@ class ProfileStatus extends React.Component {
                                autoFocus={true}/>
                      </div>
                 }
-
             </div>
         )
     }
