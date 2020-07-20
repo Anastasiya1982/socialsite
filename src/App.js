@@ -1,7 +1,7 @@
 import React, {Suspense} from 'react';
 import './App.css';
 import Nav from "./components/Nav/Nav";
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import {HashRouter, Route, withRouter} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileInfo/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -49,15 +49,15 @@ const mapStateToProps=(state)=>({
     initialized:state.app.initialized
 })
 
-const AppCotainer= compose(
+const AppContainer= compose(
     withRouter,
     connect(mapStateToProps,{initializeApp}))(App);
 
  const MainAppComponent=(props)=>{
-   return <BrowserRouter>
+   return <HashRouter >
         <Provider store={store}>
-            <AppCotainer/>
+            <AppContainer/>
         </Provider>
-    </BrowserRouter>
+    </HashRouter>
 }
 export default MainAppComponent;
