@@ -51,10 +51,11 @@ export  const profileAPI= {
         let formDate= new FormData();
         formDate.append("image",photoFile)
         return instance.put(`profile/photo` ,formDate,{
-            headers:{
-                'Content-Type':'multipart/form-data'
-            }
+            headers:{'Content-Type':'multipart/form-data'}
         });
+    },
+    saveProfile(profile){
+        return instance.put(`profile`,profile);
     }
 }
 

@@ -1,5 +1,4 @@
  import React from 'react';
-import store  from './redux/redux-store';
  import ReactDOM from 'react-dom';
  import './index.css';
  import  MainAppComponent from './App';

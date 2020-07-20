@@ -1,10 +1,12 @@
 import {profileAPI, usersAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
+
 
 const ADD_POST="ADD-POST";
 const SET_USER_PROFILE="SET_USER_PROFILE";
 const SET_STATUS="SET-STATUS";
 const DELETE_POST="DELETE-POST";
-const  SAVE_PHOTO_SUCCESS="SAVE_PHOTO_SUCCESS";
+const SAVE_PHOTO_SUCCESS="SAVE_PHOTO_SUCCESS";
 
 let initialState={
     posts: [
@@ -55,16 +57,18 @@ let initialState={
                 profile: {...state.profile,photos:action.photos}
              }
          }
-
          default:
              return state;
      }
  }
+
 export const addPostActionCreator=(newMyPostText)=>({ type:ADD_POST,newMyPostText});
 export  const setStatusAC=(status)=>({type:SET_STATUS,status});
 export const setUserProfile=(profile)=>({type:SET_USER_PROFILE,profile});
 export  const deletePost=(postId)=>({type:DELETE_POST,postId});
-export const savePhotoSuccess=(photos)=>({type:SAVE_PHOTO_SUCCESS,photos})
+export const savePhotoSuccess=(photos)=>({type:SAVE_PHOTO_SUCCESS,photos});
+
+
 
 //создаем  thunkCreator для получения профилей юзеров
 export const getUserProfile=(userId)=>async (dispatch)=>{
@@ -91,6 +95,18 @@ export const saveMainPhoto=(file)=>async (dispatch)=>{
     }
 }
 
+export const  saveProfile =(profile)=> async (dispatch,getState)=> {
+    const userId=getState().auth.id;
+    let response = await profileAPI.saveProfile(profile);
+    if (response.data.resultCode === 0) {
+        dispatch(getUserProfile(userId));
+    }else{
+        dispatch(stopSubmit("edit-profile", {_error:response.data.messages[0] }));
+            // {"contacts": {"facebook": response.data.messages[0]}
+
+        return Promise.reject(response.data.messages[0]);
+    }
+}
 
 
 export default profileReducer;

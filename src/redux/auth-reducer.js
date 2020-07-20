@@ -9,7 +9,6 @@ let initialState={
     email:null,
     login :null,
     isAuth:false
-
 };
 
  const authReducer=(state=initialState,action)=>{
@@ -25,9 +24,12 @@ let initialState={
      }
  }
 
+// action
 
  export const setAuthUserData=(id,email,login,isAuth)=>({ type:SET_USER_DATA,
        payload:{id,email,login,isAuth}});
+
+
 //создаем thunkAC
 export const getAuthUserData = () => async (dispatch) => {
     let response = await authAPI.authMe();
