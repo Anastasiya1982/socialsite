@@ -9,6 +9,12 @@ const instance=axios.create(
     }
 );
 
+export  const securityAPI= {
+    getCaptchaUrl() {
+        return instance.get(`security/get-captcha-url`);
+    }
+}
+
 export  const usersAPI={
     getUsers(currentPage=1,pageSize=10){
         return  instance.get(`users?page=${currentPage}&count=${pageSize}`)
@@ -63,8 +69,8 @@ export  const authAPI={
     authMe(){
         return instance.get(`auth/me`);
     },
-    login(email,password,rememberMe=false){
-        return instance.post(`auth/login`,{email,password,rememberMe});
+    login(email,password,rememberMe=false,captcha=null){
+        return instance.post(`auth/login`,{email,password,rememberMe,captcha});
     },
     logout(){
         return instance.delete(`auth/login`);
