@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-you can watch an example on page https://anastasiya1982.github.io/profile. for login you should use testing login :
+you can watch an example on page  Your site is published at https://anastasiya1982.github.io/socialsite/. for login you should use testing login :
 ## Email: free@samuraijs.com
 ## Password: free
 
